@@ -1,13 +1,12 @@
+import React from "react";
+import StartScreen from "./components/StartScreen";
 
-import './App.css'
-
-function App() {
-
+const App: React.FC = () => {
   return (
-    <>
-      
-    </>
-  )
-}
+    <div className="container">
+      <StartScreen />
+    </div>
+  );
+};
 
-export default App
+export default App;

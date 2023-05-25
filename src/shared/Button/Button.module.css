@@ -1,0 +1,59 @@
+.btn {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  font-weight: 700;
+  line-height: 1.75rem;
+  font-size: var(--text-s);
+  border-radius: 8px;
+  padding: 12px 64px;
+}
+
+.btnNext {
+  width: 128px;
+  padding: 12px 24px;
+}
+
+.btnGreen {
+  background-color: var(--bg-green-300);
+}
+
+.btnGreen:hover {
+  background-color: var(--bg-green-500);
+  color: var(--text-white);
+}
+
+.btnYellow {
+  background-color: var(--bg-yellow-500);
+  color: var(--text-white);
+  padding: 12px 24px;
+  width: 128px;
+}
+
+.btnYellow:hover {
+  background-color: var(--bg-yellow-400);
+}
+
+.btnRed {
+  background-color: var(--bg-red-500);
+  padding: 12px 24px;
+  color: var(--text-white);
+}
+
+.btnRed:hover {
+  background-color: var(--bg-red-400);
+}
+
+.btnGray {
+  background-color: var(--bg-gray-500);
+  padding: 12px 24px;
+  color: var(--text-white);
+  width: 128px;
+}
+
+.btnGray:hover {
+  background-color: var(--bg-gray-300);
+}
+
+.btnTryAgain {
+  padding: 12px 24px;
+}
