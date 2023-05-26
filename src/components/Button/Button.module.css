@@ -57,3 +57,10 @@
 .btnTryAgain {
   padding: 12px 24px;
 }
+
+.btnDisabled {
+  background-color: var(--bg-gray-200);
+  color: var(--text-gray);
+  width: 128px;
+  padding: 12px 24px;
+}

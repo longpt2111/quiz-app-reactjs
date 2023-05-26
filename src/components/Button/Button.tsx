@@ -3,11 +3,13 @@ import styles from "./Button.module.css";
 
 interface Props {
   label: string;
-  clickable: boolean;
+  disabled?: boolean;
 }
 
-const Button: React.FC<Props> = ({ label, clickable }) => {
-  return label === "Start" ? (
+const Button: React.FC<Props> = ({ label, disabled }) => {
+  return disabled && (label === "Previous" || label === "Next") ? (
+    <button className={`${styles.btn} ${styles.btnDisabled}`}>{label}</button>
+  ) : label === "Start" ? (
     <button className={`${styles.btn} ${styles.btnGreen}`}>{label}</button>
   ) : label === "Try again" ? (
     <button
