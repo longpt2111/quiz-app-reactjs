@@ -1,5 +1,5 @@
 import React from "react";
-import StartScreen from "./components/StartScreen";
+import StartScreen from "./pages/StartScreen";
 
 const App: React.FC = () => {
   return (
