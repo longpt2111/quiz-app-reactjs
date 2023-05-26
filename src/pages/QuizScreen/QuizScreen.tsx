@@ -27,18 +27,20 @@ const QuizScreen: React.FC<Props> = ({ setScreen, isReviewMode }) => {
         {quesIndex === quesData.length - 1 ? (
           <div className={styles.btnWrapper}>
             <Button label="Next" disabled />
-            <Button
-              label="Submit"
-              onClick={() => {
-                if (confirm("Do you want to submit answers ?"))
-                  setScreen("score");
-              }}
-            />
+            {!isReviewMode && (
+              <Button
+                label="Submit"
+                onClick={() => {
+                  if (confirm("Do you want to submit answers ?"))
+                    setScreen("score");
+                }}
+              />
+            )}
           </div>
         ) : (
           <Button label="Next" onClick={() => setQuesIndex(quesIndex + 1)} />
         )}
-        {isReviewMode ? (
+        {isReviewMode && (
           <Button
             label="Restart"
             onClick={() => {
@@ -46,8 +48,6 @@ const QuizScreen: React.FC<Props> = ({ setScreen, isReviewMode }) => {
               window.location.reload();
             }}
           />
-        ) : (
-          ""
         )}
       </div>
       <QuizQues quesIndex={quesIndex} />
