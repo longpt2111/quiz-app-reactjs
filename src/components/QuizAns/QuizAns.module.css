@@ -1,3 +1,4 @@
+.disabledContainer,
 .container {
   width: 40rem;
   height: 4rem;
@@ -17,5 +18,10 @@
 
 .container:hover {
   background-color: var(--bg-indigo-900);
+  color: var(--text-white);
+}
+
+.correctAns {
+  background-color: var(--bg-green-500);
   color: var(--text-white);
 }

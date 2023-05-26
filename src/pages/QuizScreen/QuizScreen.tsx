@@ -51,13 +51,32 @@ const QuizScreen: React.FC<Props> = ({ setScreen, isReviewMode }) => {
         )}
       </div>
       <QuizQues quesIndex={quesIndex} />
-      {quesData[quesIndex].answers.map((answer, index) => (
-        <QuizAns
-          key={index}
-          answerContent={answer.answer_content}
-          answerIndex={index + 1}
-        />
-      ))}
+      {isReviewMode
+        ? quesData[quesIndex].answers.map((answer, index) =>
+            answer.correct ? (
+              <QuizAns
+                key={index}
+                answerContent={answer.answer_content}
+                answerIndex={index + 1}
+                disabled
+                isCorrect
+              />
+            ) : (
+              <QuizAns
+                key={index}
+                answerContent={answer.answer_content}
+                answerIndex={index + 1}
+                disabled
+              />
+            )
+          )
+        : quesData[quesIndex].answers.map((answer, index) => (
+            <QuizAns
+              key={index}
+              answerContent={answer.answer_content}
+              answerIndex={index + 1}
+            />
+          ))}
     </div>
   );
 };
