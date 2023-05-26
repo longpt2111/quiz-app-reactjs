@@ -1,0 +1,24 @@
+.container {
+  margin: 64px 0 40px;
+  padding: 64px 16px 0;
+  width: 720px;
+  height: 224px;
+  background-color: var(--bg-white);
+  box-shadow: var(--box-shadow);
+  border-radius: 6px;
+}
+
+.quizNumber {
+  font-weight: 500;
+  margin-bottom: 32px;
+  color: var(--text-indigo-700);
+}
+
+.quizIndex {
+  font-weight: 800;
+}
+
+.quizQues {
+  font-weight: 700;
+  font-size: var(--text-m);
+}
