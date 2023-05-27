@@ -21,7 +21,7 @@ const QuizScreen: React.FC<Props> = ({
 }) => {
   const [quesIndex, setQuesIndex] = useState(0);
 
-  const handleAnswerClick = (selectedAnswer: UserAnswer) => {
+  const handleAnswerClick = (selectedAnswer: UserAnswer): void => {
     if (setUserAnswers) {
       setUserAnswers((prevUserAnswers) => {
         const updatedUserAnswers = [...prevUserAnswers];
