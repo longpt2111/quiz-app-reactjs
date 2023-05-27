@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import StartScreen from "./pages/StartScreen";
 import QuizScreen from "./pages/QuizScreen";
 import ScoreScreen from "./pages/ScoreScreen";
@@ -8,10 +8,6 @@ import { UserAnswer } from "./model";
 const App: React.FC = () => {
   const [screen, setScreen] = useState<string>("start");
   const [userAnswers, setUserAnswers] = useState<UserAnswer[]>([]);
-
-  useEffect(() => {
-    console.log(userAnswers);
-  });
 
   return (
     <div className="container">

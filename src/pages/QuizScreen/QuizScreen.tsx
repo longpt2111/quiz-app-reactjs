@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import styles from "./QuizScreen.module.css";
 import Button from "../../components/Button";
-import QuizQues from "../../components/QuizQues";
 import QuizAns from "../../components/QuizAns";
-import quesData from "../../data/questions.json";
+import QuizQues from "../../components/QuizQues";
+import questions from "../../data/shuffedQuestions";
 import { UserAnswer } from "../../model";
+import styles from "./QuizScreen.module.css";
 
 interface Props {
   setScreen: React.Dispatch<React.SetStateAction<string>>;
@@ -41,7 +41,7 @@ const QuizScreen: React.FC<Props> = ({
             if (quesIndex > 0) setQuesIndex(quesIndex - 1);
           }}
         />
-        {quesIndex === quesData.length - 1 ? (
+        {quesIndex === questions.length - 1 ? (
           <div className={styles.btnWrapper}>
             <Button label="Next" disabled />
             {!isReviewMode && (
@@ -68,7 +68,7 @@ const QuizScreen: React.FC<Props> = ({
         )}
       </div>
       <QuizQues quesIndex={quesIndex} />
-      {quesData[quesIndex].answers.map((answer, index) => (
+      {questions[quesIndex].answers.map((answer, index) => (
         <QuizAns
           key={index}
           answerContent={answer.answer_content}
