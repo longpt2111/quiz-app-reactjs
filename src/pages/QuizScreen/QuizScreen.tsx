@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "../../components/Button";
 import QuizAns from "../../components/QuizAns";
 import QuizQues from "../../components/QuizQues";
-import questions from "../../data/shuffedQuestions";
+import questions from "../../data/shuffledQuestions";
 import { UserAnswer } from "../../model";
 import styles from "./QuizScreen.module.css";
 
