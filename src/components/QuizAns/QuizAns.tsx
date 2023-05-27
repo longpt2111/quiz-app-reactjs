@@ -6,6 +6,8 @@ interface Props {
   answerIndex: number;
   disabled?: boolean;
   isCorrect?: boolean;
+  onClick?(): void;
+  isSelected?: boolean;
 }
 
 const QuizAns: React.FC<Props> = ({
@@ -13,6 +15,8 @@ const QuizAns: React.FC<Props> = ({
   answerIndex,
   disabled,
   isCorrect,
+  onClick,
+  isSelected,
 }) => {
   return disabled ? (
     <div
@@ -25,7 +29,14 @@ const QuizAns: React.FC<Props> = ({
       <p>{`${answerIndex}) ${answerContent}`}</p>
     </div>
   ) : (
-    <div className={styles.container}>
+    <div
+      className={
+        isSelected
+          ? `${styles.container} ${styles.selectedAns}`
+          : styles.container
+      }
+      onClick={onClick}
+    >
       <p>{`${answerIndex}) ${answerContent}`}</p>
     </div>
   );

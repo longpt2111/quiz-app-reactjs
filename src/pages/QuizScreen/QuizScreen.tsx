@@ -4,14 +4,32 @@ import Button from "../../components/Button";
 import QuizQues from "../../components/QuizQues";
 import QuizAns from "../../components/QuizAns";
 import quesData from "../../data/questions.json";
+import { UserAnswer } from "../../model";
 
 interface Props {
   setScreen: React.Dispatch<React.SetStateAction<string>>;
   isReviewMode?: boolean;
+  userAnswers: UserAnswer[];
+  setUserAnswers?: React.Dispatch<React.SetStateAction<UserAnswer[]>>;
 }
 
-const QuizScreen: React.FC<Props> = ({ setScreen, isReviewMode }) => {
+const QuizScreen: React.FC<Props> = ({
+  setScreen,
+  isReviewMode,
+  userAnswers,
+  setUserAnswers,
+}) => {
   const [quesIndex, setQuesIndex] = useState(0);
+
+  const handleAnswerClick = (selectedAnswer: UserAnswer) => {
+    if (setUserAnswers) {
+      setUserAnswers((prevUserAnswers) => {
+        const updatedUserAnswers = [...prevUserAnswers];
+        updatedUserAnswers[quesIndex] = selectedAnswer;
+        return updatedUserAnswers;
+      });
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -75,6 +93,14 @@ const QuizScreen: React.FC<Props> = ({ setScreen, isReviewMode }) => {
               key={index}
               answerContent={answer.answer_content}
               answerIndex={index + 1}
+              onClick={() => {
+                handleAnswerClick({
+                  questionId: quesIndex + 1,
+                  selectedAnswerId: index,
+                  isCorrect: answer.correct,
+                });
+              }}
+              isSelected={userAnswers[quesIndex]?.selectedAnswerId === index}
             />
           ))}
     </div>

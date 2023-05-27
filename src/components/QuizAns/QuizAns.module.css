@@ -25,3 +25,9 @@
   background-color: var(--bg-green-500);
   color: var(--text-white);
 }
+
+.selectedAns,
+.selectedAns:hover {
+  background-color: var(--bg-indigo-900);
+  color: var(--text-white);
+}
