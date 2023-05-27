@@ -14,7 +14,7 @@ const ScoreScreen: React.FC<Props> = ({ setScreen, userAnswers }) => {
       <h1 className={styles.heading}>
         Your score is :{" "}
         <span className={styles.score}>
-          {userAnswers.filter((userAnswer) => userAnswer.isCorrect).length}
+          {userAnswers.filter((userAnswer) => userAnswer?.isCorrect).length}
         </span>
       </h1>
       <div className={styles.scoreControl}>
