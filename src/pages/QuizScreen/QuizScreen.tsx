@@ -83,11 +83,7 @@ const QuizScreen: React.FC<Props> = ({
                 isCorrect: answer.correct,
               });
           }}
-          isSelected={
-            !isReviewMode
-              ? userAnswers[quesIndex]?.selectedAnswerId === index
-              : false
-          }
+          isSelected={userAnswers[quesIndex]?.selectedAnswerId === index}
         />
       ))}
     </div>

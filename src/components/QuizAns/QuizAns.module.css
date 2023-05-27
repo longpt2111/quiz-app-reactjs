@@ -31,3 +31,8 @@
   background-color: var(--bg-indigo-900);
   color: var(--text-white);
 }
+
+.wrongSelectedAns {
+  background-color: var(--bg-red-500);
+  color: var(--text-white);
+}

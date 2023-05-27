@@ -23,6 +23,8 @@ const QuizAns: React.FC<Props> = ({
       className={
         isCorrect
           ? `${styles.disabledContainer}  ${styles.correctAns}`
+          : isSelected
+          ? `${styles.disabledContainer} ${styles.wrongSelectedAns}`
           : styles.disabledContainer
       }
     >
