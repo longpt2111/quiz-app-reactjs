@@ -5,9 +5,9 @@ interface Props {
   answerContent: string;
   answerIndex: number;
   disabled?: boolean;
-  isCorrect?: boolean;
-  onClick?(): void;
-  isSelected?: boolean;
+  isCorrect: boolean;
+  onClick(): void;
+  isSelected: boolean;
 }
 
 const QuizAns: React.FC<Props> = ({

@@ -34,14 +34,13 @@ const QuizScreen: React.FC<Props> = ({
   return (
     <div className={styles.container}>
       <div className={styles.quizControl}>
-        {quesIndex === 0 ? (
-          <Button label="Previous" disabled />
-        ) : (
-          <Button
-            label="Previous"
-            onClick={() => setQuesIndex(quesIndex - 1)}
-          />
-        )}
+        <Button
+          label="Previous"
+          disabled={quesIndex === 0}
+          onClick={() => {
+            if (quesIndex > 0) setQuesIndex(quesIndex - 1);
+          }}
+        />
         {quesIndex === quesData.length - 1 ? (
           <div className={styles.btnWrapper}>
             <Button label="Next" disabled />
@@ -69,40 +68,28 @@ const QuizScreen: React.FC<Props> = ({
         )}
       </div>
       <QuizQues quesIndex={quesIndex} />
-      {isReviewMode
-        ? quesData[quesIndex].answers.map((answer, index) =>
-            answer.correct ? (
-              <QuizAns
-                key={index}
-                answerContent={answer.answer_content}
-                answerIndex={index + 1}
-                disabled
-                isCorrect
-              />
-            ) : (
-              <QuizAns
-                key={index}
-                answerContent={answer.answer_content}
-                answerIndex={index + 1}
-                disabled
-              />
-            )
-          )
-        : quesData[quesIndex].answers.map((answer, index) => (
-            <QuizAns
-              key={index}
-              answerContent={answer.answer_content}
-              answerIndex={index + 1}
-              onClick={() => {
-                handleAnswerClick({
-                  questionId: quesIndex + 1,
-                  selectedAnswerId: index,
-                  isCorrect: answer.correct,
-                });
-              }}
-              isSelected={userAnswers[quesIndex]?.selectedAnswerId === index}
-            />
-          ))}
+      {quesData[quesIndex].answers.map((answer, index) => (
+        <QuizAns
+          key={index}
+          answerContent={answer.answer_content}
+          answerIndex={index + 1}
+          disabled={isReviewMode}
+          isCorrect={isReviewMode ? answer.correct : false}
+          onClick={() => {
+            if (!isReviewMode)
+              handleAnswerClick({
+                questionId: quesIndex + 1,
+                selectedAnswerId: index,
+                isCorrect: answer.correct,
+              });
+          }}
+          isSelected={
+            !isReviewMode
+              ? userAnswers[quesIndex]?.selectedAnswerId === index
+              : false
+          }
+        />
+      ))}
     </div>
   );
 };
