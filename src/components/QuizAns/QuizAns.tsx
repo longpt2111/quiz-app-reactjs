@@ -15,15 +15,15 @@ const QuizAns: React.FC<Props> = ({
   isCorrect,
 }) => {
   return disabled ? (
-    isCorrect ? (
-      <div className={`${styles.disabledContainer}  ${styles.correctAns}`}>
-        <p>{`${answerIndex}) ${answerContent}`}</p>
-      </div>
-    ) : (
-      <div className={styles.disabledContainer}>
-        <p>{`${answerIndex}) ${answerContent}`}</p>
-      </div>
-    )
+    <div
+      className={
+        isCorrect
+          ? `${styles.disabledContainer}  ${styles.correctAns}`
+          : styles.disabledContainer
+      }
+    >
+      <p>{`${answerIndex}) ${answerContent}`}</p>
+    </div>
   ) : (
     <div className={styles.container}>
       <p>{`${answerIndex}) ${answerContent}`}</p>
