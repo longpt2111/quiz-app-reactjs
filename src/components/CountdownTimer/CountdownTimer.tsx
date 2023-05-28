@@ -19,21 +19,18 @@ const CountdownTimer: React.FC<Props> = ({
   useEffect(() => {
     let intervalId: number | undefined;
 
-    if (!isReviewMode)
-      if (remainingTime > 0) {
-        intervalId = setInterval(() => {
-          setRemainingTime((prevTime) => {
-            if (prevTime <= 1) {
-              clearInterval(intervalId);
-              onFinish();
-              return 0;
-            }
-            return prevTime - 1;
-          });
-        }, 1000);
-      } else {
-        onFinish();
-      }
+    if (!isReviewMode && remainingTime > 0) {
+      intervalId = setInterval(() => {
+        setRemainingTime((prevTime) => {
+          if (prevTime <= 1) {
+            clearInterval(intervalId);
+            onFinish();
+            return 0;
+          }
+          return prevTime - 1;
+        });
+      }, 1000);
+    }
 
     return () => {
       if (intervalId) {
