@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 116px;
+  top: 126px;
 }
 
 .timer {
@@ -12,11 +12,11 @@
 
 .circle {
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 5rem;
+  height: 5rem;
   border-radius: 50%;
   background-color: var(--bg-white);
-  box-shadow: var(--box-shadow);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .svg {
@@ -24,20 +24,19 @@
   top: 0;
   left: 0;
   transform: rotate(-90deg);
-  width: 100px;
-  height: 100px;
+  width: 5rem;
+  height: 5rem;
 }
 
 .circleBackground {
   fill: none;
   stroke: var(--bg-white);
-  stroke-width: 5;
 }
 
 .circleProgress {
   fill: none;
   stroke: var(--bg-timer);
-  stroke-width: 10;
+  stroke-width: 8;
   stroke-dasharray: 283;
   stroke-dashoffset: 283;
   transition: stroke-dashoffset 0.5s ease 0s;
@@ -55,4 +54,5 @@
   font-size: 16px;
   font-weight: 700;
   color: var(--bg-timer);
+  line-height: 1.5rem;
 }
