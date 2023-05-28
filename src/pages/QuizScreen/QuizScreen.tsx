@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Button from "../../components/Button";
+import CountdownTimer from "../../components/CountdownTimer";
 import QuizAns from "../../components/QuizAns";
 import QuizQues from "../../components/QuizQues";
 import questions from "../../data/shuffledQuestions";
@@ -29,6 +30,10 @@ const QuizScreen: React.FC<Props> = ({
         return updatedUserAnswers;
       });
     }
+  };
+
+  const handleTimerFinish = (): void => {
+    setScreen("score");
   };
 
   return (
@@ -67,6 +72,7 @@ const QuizScreen: React.FC<Props> = ({
           />
         )}
       </div>
+      <CountdownTimer minutes={1} seconds={30} onFinish={handleTimerFinish} />
       <QuizQues quesIndex={quesIndex} />
       {questions[quesIndex].answers.map((answer, index) => (
         <QuizAns

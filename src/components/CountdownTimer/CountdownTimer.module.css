@@ -1,0 +1,58 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 116px;
+}
+
+.timer {
+  position: relative;
+}
+
+.circle {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: var(--bg-white);
+  box-shadow: var(--box-shadow);
+}
+
+.svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg);
+  width: 100px;
+  height: 100px;
+}
+
+.circleBackground {
+  fill: none;
+  stroke: var(--bg-white);
+  stroke-width: 5;
+}
+
+.circleProgress {
+  fill: none;
+  stroke: var(--bg-timer);
+  stroke-width: 10;
+  stroke-dasharray: 283;
+  stroke-dashoffset: 283;
+  transition: stroke-dashoffset 0.5s ease 0s;
+  stroke-linecap: round;
+}
+
+.time {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--bg-timer);
+}
