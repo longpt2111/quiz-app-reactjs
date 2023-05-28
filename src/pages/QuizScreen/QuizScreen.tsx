@@ -72,7 +72,12 @@ const QuizScreen: React.FC<Props> = ({
           />
         )}
       </div>
-      <CountdownTimer minutes={1} seconds={30} onFinish={handleTimerFinish} />
+      <CountdownTimer
+        minutes={1}
+        seconds={30}
+        onFinish={handleTimerFinish}
+        isReviewMode={isReviewMode}
+      />
       <QuizQues quesIndex={quesIndex} />
       {questions[quesIndex].answers.map((answer, index) => (
         <QuizAns
