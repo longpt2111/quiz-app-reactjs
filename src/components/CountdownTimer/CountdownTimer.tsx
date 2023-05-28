@@ -39,7 +39,7 @@ const CountdownTimer: React.FC<Props> = ({ minutes, seconds, onFinish }) => {
     .toString()
     .padStart(2, "0");
   const formattedSeconds = (remainingTime % 60).toString().padStart(2, "0");
-  const progress = (remainingTime / (minutes * 60 + seconds)) * 283;
+  const progress = (remainingTime / (minutes * 60 + seconds)) * 226.19;
 
   return (
     <div className={styles.container}>
@@ -58,7 +58,7 @@ const CountdownTimer: React.FC<Props> = ({ minutes, seconds, onFinish }) => {
               cx="40"
               cy="40"
               style={{
-                strokeDashoffset: 283 - progress,
+                strokeDashoffset: 226.19 - progress,
               }}
             ></circle>
           </svg>
