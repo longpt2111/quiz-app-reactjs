@@ -6,6 +6,8 @@ interface Props {
   seconds: number;
   onFinish(): void;
   isReviewMode: boolean | undefined;
+  timeBeforeConfirm: number;
+  timeAfterConfirm: number;
 }
 
 const CountdownTimer: React.FC<Props> = ({
@@ -13,6 +15,8 @@ const CountdownTimer: React.FC<Props> = ({
   seconds,
   onFinish,
   isReviewMode,
+  timeBeforeConfirm,
+  timeAfterConfirm,
 }) => {
   const [remainingTime, setRemainingTime] = useState(minutes * 60 + seconds);
 
@@ -39,6 +43,13 @@ const CountdownTimer: React.FC<Props> = ({
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    setRemainingTime(
+      (prevTime) =>
+        prevTime - Math.floor((timeAfterConfirm - timeBeforeConfirm) / 1000)
+    );
+  }, [timeBeforeConfirm, timeAfterConfirm]);
 
   const formattedMinutes = Math.floor(remainingTime / 60)
     .toString()

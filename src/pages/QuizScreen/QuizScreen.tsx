@@ -20,7 +20,9 @@ const QuizScreen: React.FC<Props> = ({
   userAnswers,
   setUserAnswers,
 }) => {
-  const [quesIndex, setQuesIndex] = useState(0);
+  const [quesIndex, setQuesIndex] = useState<number>(0);
+  const [timeBeforeConfirm, setTimeBeforeConfirm] = useState<number>(0);
+  const [timeAfterConfirm, setTimeAfterConfirm] = useState<number>(0);
 
   const handleAnswerClick = (selectedAnswer: UserAnswer): void => {
     if (setUserAnswers) {
@@ -53,8 +55,12 @@ const QuizScreen: React.FC<Props> = ({
               <Button
                 label="Submit"
                 onClick={() => {
-                  if (confirm("Do you want to submit answers ?"))
+                  setTimeBeforeConfirm(Date.now());
+                  if (confirm("Do you want to submit answers ?")) {
                     setScreen("score");
+                  } else {
+                    setTimeAfterConfirm(Date.now());
+                  }
                 }}
               />
             )}
@@ -77,6 +83,8 @@ const QuizScreen: React.FC<Props> = ({
         seconds={30}
         onFinish={handleTimerFinish}
         isReviewMode={isReviewMode}
+        timeBeforeConfirm={timeBeforeConfirm}
+        timeAfterConfirm={timeAfterConfirm}
       />
       <QuizQues quesIndex={quesIndex} />
       {questions[quesIndex].answers.map((answer, index) => (

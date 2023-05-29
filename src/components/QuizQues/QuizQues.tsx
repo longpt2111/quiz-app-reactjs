@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./QuizQues.module.css";
-import quesData from "../../data/questions.json";
+import quesData from "../../data/shuffledQuestions";
 
 interface Props {
   quesIndex: number;
