@@ -24,7 +24,7 @@ const CountdownTimer: React.FC<Props> = ({
         setRemainingTime((prevTime) => {
           if (prevTime <= 1) {
             clearInterval(intervalId);
-            onFinish();
+            setTimeout(onFinish, 500);
             return 0;
           }
           return prevTime - 1;
@@ -37,7 +37,8 @@ const CountdownTimer: React.FC<Props> = ({
         clearInterval(intervalId);
       }
     };
-  }, [remainingTime, onFinish, isReviewMode]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const formattedMinutes = Math.floor(remainingTime / 60)
     .toString()
@@ -59,7 +60,11 @@ const CountdownTimer: React.FC<Props> = ({
                   cy="40"
                 ></circle>
                 <circle
-                  className={styles.circleProgress}
+                  className={
+                    remainingTime <= 4
+                      ? `${styles.circleProgress} ${styles.timerEnd}`
+                      : styles.circleProgress
+                  }
                   r="36"
                   cx="40"
                   cy="40"
@@ -68,7 +73,13 @@ const CountdownTimer: React.FC<Props> = ({
                   }}
                 ></circle>
               </svg>
-              <div className={styles.time}>
+              <div
+                className={
+                  remainingTime <= 4
+                    ? `${styles.time} ${styles.timerEnd}`
+                    : styles.time
+                }
+              >
                 <span>{formattedMinutes}</span>:<span>{formattedSeconds}</span>
               </div>
             </>
